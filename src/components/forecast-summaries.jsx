@@ -1,17 +1,6 @@
 import React from 'react';
 import ForecastSummary from './forecast-summary';
-import PropTypes from 'prop-types';
-import LocationDetails from './location-details';
-
-const App = props => (
-  <div className="forecast">
-    <LocationDetails
-      city={props.location.city}
-      country={props.location.country}
-    />
-    <ForecastSummaries forecasts={props.forecast} />
-  </div>
-);
+import '../styles/forecast-summaries.scss';
 
 const ForecastSummaries = props => (
   <div className="forecast-summaries">
@@ -27,12 +16,6 @@ const ForecastSummaries = props => (
       ))
     }
   </div>
-
-ForecastSummary.propTypes = {
-  date: PropTypes.number.isRequired,
-  temperature: PropTypes.number.isRequired,
-  description: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequ
-};
+);
 
 export default ForecastSummaries;
