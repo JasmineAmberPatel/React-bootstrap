@@ -1,6 +1,7 @@
 import React from 'react';
 import ForecastSummary from './forecast-summary';
 import '../styles/forecast-summaries.scss';
+import '../styles/location-details.scss';
 
 const ForecastSummaries = props => (
   <div className="forecast-summaries">
