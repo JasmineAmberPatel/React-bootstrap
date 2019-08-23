@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LocationDetails from './location-details';
 import ForecastSummaries from './forecast-summaries';
+import ForecastDetails from './forecast-details';
 import '../styles/app.scss';
 
 const App = props => (
@@ -13,8 +14,10 @@ const App = props => (
     <ForecastSummaries
       forecasts={props.forecasts}
     />
+    <ForecastDetails forecast={props.forecasts[0]} />
   </div>
 );
+
 
 App.propTypes = {
   location: PropTypes.shape({
