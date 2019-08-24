@@ -25,6 +25,9 @@ const ForecastSummary = props => (
     <div>
       <span className="forecast-summary__description">{props.description}</span>
     </div>
+    <div>
+      <button onClick={() => console.log('Hello!')}>More details</button>
+    </div>
   </h4>
 );
 
