@@ -1,5 +1,6 @@
 import React from 'react';
 import ForecastSummary from './forecast-summary';
+import App from './app';
 import '../styles/forecast-summaries.scss';
 import '../styles/location-details.scss';
 
