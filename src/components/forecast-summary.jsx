@@ -15,29 +15,29 @@ const WeatherComponent = (props) => {
 const ForecastSummary = props => (
   <h4>
     <div className="forecast-summary__date">
-      <span> {Moment(props.date).format('ddd Do MMM')}{props.onSelect}</span>
+      <span> {Moment(props.date).format('ddd Do MMM')}</span>
     </div>
     <div className="forecast-summary__icon">
       <WeatherIcon name="owm" iconId={props.icon} />
     </div>
     <div>
-      <span className="forecast-summary__temperature">{props.temperature}{props.onSelect}</span>
+      <span className="forecast-summary__temperature">{props.temperature}</span>
     </div>
     <div>
-      <span className="forecast-summary__description">{props.description}{props.onSelect}</span>
+      <span className="forecast-summary__description">{props.description}</span>
     </div>
     <div>
-      <button onClick={() => props.onSelect(props.date)}>More details</button>
+      <button onClick={() => props.onForecastSelect(props.date)}>More details</button>
     </div>
   </h4>
 );
 
 ForecastSummary.propTypes = {
-  date: PropTypes.string.isRequired,
+  date: PropTypes.number.isRequired,
   icon: PropTypes.string.isRequired,
-  temperature: PropTypes.string.isRequired,
+  temperature: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
-  onForecastSelect: PropTypes.string.isRequired,
+  onForecastSelect: PropTypes.func.isRequired,
 };
 
 export default ForecastSummary;
