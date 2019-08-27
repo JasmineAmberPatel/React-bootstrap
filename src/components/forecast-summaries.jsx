@@ -1,7 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ForecastSummary from './forecast-summary';
-import App from './app';
 import '../styles/forecast-summaries.scss';
 import '../styles/location-details.scss';
 
@@ -22,8 +20,5 @@ const ForecastSummaries = props => (
   </div>
 );
 
-ForecastSummaries.propTypes = {
-  onForecastSelect: PropTypes.string.isRequired,
-};
 
 export default ForecastSummaries;

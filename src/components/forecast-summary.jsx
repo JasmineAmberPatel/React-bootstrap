@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import WeatherIcon from 'react-icons-weather';
-import App from './app';
 import Moment from 'moment';
 
 const WeatherComponent = (props) => {
