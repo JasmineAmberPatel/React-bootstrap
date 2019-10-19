@@ -28,7 +28,7 @@ class App extends React.Component {
   componentDidMount = () => {
     axios.get('https://mcr-codes-weather.herokuapp.com/forecast?city=London')
       .then(response => {
-        this.setState({ forecasts: this.state.forecasts, location: this.state.location });
+        this.setState({ forecasts: response.data.forecasts, location: response.data.location });
         console.log(response.data);
       })
       .catch(error => {
@@ -39,20 +39,25 @@ class App extends React.Component {
   render() {
     const selectedForecast =
       this.state.forecasts.find(forecast => forecast.date === this.state.selectedDate);
+    if (this.state.forecasts) {
+      return (
+        <div className="forecast">
+          <LocationDetails
+            city={this.state.location.city}
+            country={this.state.location.country}
+          />
+          <ForecastSummaries
+            forecasts={this.state.forecasts}
+            handleForecastSelect={this.handleForecastSelect}
+          />
+          {
+            selectedForecast && <ForecastDetails forecast={selectedForecast} />
+          }
+        </div>
+      );
+    }
     return (
-      <div className="forecast">
-        <LocationDetails
-          city={this.state.location.city}
-          country={this.state.location.country}
-        />
-        <ForecastSummaries
-          forecasts={this.state.forecasts}
-          handleForecastSelect={this.handleForecastSelect}
-        />
-        {
-          selectedForecast && <ForecastDetails forecast={selectedForecast} />
-        }
-      </div>
+      <h1> sad :( </h1>
     );
   }
 }
