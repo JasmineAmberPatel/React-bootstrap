@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import LocationDetails from './location-details';
 import ForecastSummaries from './forecast-summaries';
 import ForecastDetails from './forecast-details';
 import '../styles/app.scss';
 import axios from 'axios';
+import SearchForm from './SearchForm';
 
 
 class App extends React.Component {
@@ -46,6 +46,7 @@ class App extends React.Component {
             city={this.state.location.city}
             country={this.state.location.country}
           />
+          <SearchForm />
           <ForecastSummaries
             forecasts={this.state.forecasts}
             handleForecastSelect={this.handleForecastSelect}
