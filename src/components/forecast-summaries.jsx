@@ -3,7 +3,7 @@ import ForecastSummary from './forecast-summary';
 import '../styles/app.scss';
 
 const ForecastSummaries = props => (
-  <h4 className="forecast-summaries">
+  <div className="forecast-summaries">
     {
       props.forecasts.map(forecast => (
         <ForecastSummary
@@ -16,7 +16,7 @@ const ForecastSummaries = props => (
         />
       ))
     }
-  </h4>
+  </div>
 );
 
 export default ForecastSummaries;
