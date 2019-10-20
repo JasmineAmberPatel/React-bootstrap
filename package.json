@@ -7,6 +7,10 @@
     "start": "webpack-dev-server",
     "test": "jest"
   },
+  "engines": {
+    "npm": "6.4.1",
+    "node": "10.15.3"
+  },
   "keywords": [
     "react"
   ],
