@@ -6,7 +6,6 @@ import '../styles/app.scss';
 import axios from 'axios';
 import SearchForm from './SearchForm';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -19,46 +18,57 @@ class App extends React.Component {
       },
     };
     this.handleForecastSelect = this.handleForecastSelect.bind(this);
+    this.handleCitySearch = this.handleCitySearch.bind(this);
   }
 
   handleForecastSelect(date) {
     this.setState({ selectedDate: date });
   }
 
+  getData(url) {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => this.setState({
+        location: {
+          city: data.location.city,
+          country: data.location.country,
+        },
+        forecasts: data.forecasts,
+      }));
+  }
+
   componentDidMount = () => {
-    axios.get('https://mcr-codes-weather.herokuapp.com/forecast?city=London')
-      .then(response => {
-        this.setState({ forecasts: response.data.forecasts, location: response.data.location });
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    const url = 'https://mcr-codes-weather.herokuapp.com/forecast?city=London';
+    this.getData(url);
   };
+
+  handleCitySearch(city) {
+    const newCity = city;
+    const url = `https://mcr-codes-weather.herokuapp.com/forecast?city=${newCity}`;
+    this.getData(url);
+  }
 
   render() {
     const selectedForecast =
       this.state.forecasts.find(forecast => forecast.date === this.state.selectedDate);
-    if (this.state.forecasts) {
-      return (
-        <div className="forecast">
-          <LocationDetails
-            city={this.state.location.city}
-            country={this.state.location.country}
-          />
-          <SearchForm />
-          <ForecastSummaries
-            forecasts={this.state.forecasts}
-            handleForecastSelect={this.handleForecastSelect}
-          />
-          {
-            selectedForecast && <ForecastDetails forecast={selectedForecast} />
-          }
-        </div>
-      );
-    }
     return (
-      <h1> sad :( </h1>
+      <div className="forecast">
+        <LocationDetails
+          city={this.state.location.city}
+          country={this.state.location.country}
+        />
+        <SearchForm
+          handleClick={this.handleCitySearch}
+          handleKeyPress={this.handleCitySearch}
+        />
+        <ForecastSummaries
+          forecasts={this.state.forecasts}
+          onForecastSelect={this.handleForecastSelect}
+        />
+        {
+          selectedForecast && <ForecastDetails forecast={selectedForecast} />
+        }
+      </div>
     );
   }
 }
