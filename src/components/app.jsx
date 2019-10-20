@@ -3,7 +3,6 @@ import LocationDetails from './location-details';
 import ForecastSummaries from './forecast-summaries';
 import ForecastDetails from './forecast-details';
 import '../styles/app.scss';
-import axios from 'axios';
 import SearchForm from './SearchForm';
 
 class App extends React.Component {
@@ -38,7 +37,7 @@ class App extends React.Component {
   }
 
   componentDidMount = () => {
-    const url = 'https://mcr-codes-weather.herokuapp.com/forecast?city=London';
+    const url = 'https://mcr-codes-weather.herokuapp.com/forecast?city=Bolton';
     this.getData(url);
   };
 
